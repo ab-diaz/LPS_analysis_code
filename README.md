@@ -26,7 +26,6 @@ scripts/                        Scripts called directly by the Snakefile
 scripts/selection_phase2/        Downstream manuscript analyses
 scripts/selection_phase2/pseudomonas_fulva_lps_analysis/
                                 Exploratory Pseudomonas fulva side analysis
-scripts/archive_optional/        Older, alternative, or provenance scripts
 MANIFEST.tsv                    Short description of key scripts
 environment.yml                 Conda environment template
 LICENSE                         Code license
@@ -127,13 +126,6 @@ scripts/selection_phase2/pseudomonas_fulva_lps_analysis/
 
 It was analyzed separately and was not combined statistically with the primary
 Pantoea/Kalamiella comparison.
-
-## Optional Archive
-
-`scripts/archive_optional/` contains older, alternative, or provenance scripts.
-They are included for transparency, but they are not part of the primary
-reproduction path. Readers should use the main `Snakefile`, `config/config.yaml`,
-and the non-archived scripts first.
 
 ## Software Requirements
 

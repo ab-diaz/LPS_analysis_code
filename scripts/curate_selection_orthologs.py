@@ -319,7 +319,7 @@ def main():
         description="Curate single-copy rfbABCD and waaL orthologs for codon selection analysis."
     )
     parser.add_argument("--root", default=".")
-    parser.add_argument("--groups", default="old/pantoea_folders_location.tsv")
+    parser.add_argument("--groups", default="metadata.tsv")
     parser.add_argument("--nucleotides", default="lps_analysis/lps_eggnog_nucleotides.ffn")
     parser.add_argument("--proteins", default="lps_analysis/lps_eggnog_proteins.faa")
     parser.add_argument("--rfb-locations", default="lps_analysis/rfb_eggnog_locations.tsv")

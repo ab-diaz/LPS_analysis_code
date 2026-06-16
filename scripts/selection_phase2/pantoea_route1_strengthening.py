@@ -256,7 +256,7 @@ def build_locus_tables():
         for _, h in sub.iterrows():
             idx = by_locus.get(str(h["query"]))
             if idx is None:
-                # Some eggNOG query IDs are not exact Bakta locus tags in older runs.
+                # Some eggNOG query IDs are not exact Bakta locus tags.
                 candidates = cds[cds["gene_norm"].eq(h["gene_norm"])]
                 if candidates.empty:
                     continue

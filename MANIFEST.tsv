@@ -26,4 +26,3 @@ scripts/selection_phase2/relax_sensitivity_summarize.py	Summarize RELAX sensitiv
 scripts/selection_phase2/gard_relax_sensitivity_report.py	Combine GARD/RELAX sensitivity summaries.
 scripts/selection_phase2/make_final_supplementary_tables.py	Assemble final supplementary tables from intermediate outputs.
 scripts/selection_phase2/pseudomonas_fulva_lps_analysis/	Exploratory Pseudomonas fulva side-analysis scripts.
-scripts/archive_optional/	Older, alternative, or provenance scripts retained for transparency but not part of the primary reproduction path.

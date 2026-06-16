@@ -30,8 +30,7 @@ def main() -> None:
     goslim = pd.read_csv(BASE / "lps_goslim_norm_metadata_ordered.tsv", sep="\t")
     goslim = goslim.rename(columns={"Unnamed: 0": "isolate"})
 
-    # One row was produced with an older sample-name normalization; the genome is
-    # the same isolate used elsewhere in the manuscript.
+    # Harmonize one sample-name variant with the identifier used elsewhere.
     goslim["isolate"] = goslim["isolate"].replace(
         {"Pantoea_piersonii_F9_6S_D2_EB4_spades": "Pantoea_piersonii_F8_6S_D2_EB4_spades"}
     )
