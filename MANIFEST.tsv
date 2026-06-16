@@ -1,5 +1,6 @@
 path	description
 Snakefile	Main configurable Snakemake workflow for Bakta, eggNOG-mapper, LPS/O-antigen extraction, GO/KO summaries, plots, and selection-prep outputs.
+config/config.yaml	Configuration template for the primary Snakemake reproduction path.
 scripts/extract_lps_from_eggnog.py	Extract LPS/O-antigen protein and nucleotide sequences from eggNOG annotations.
 scripts/extract_lps_go_terms.py	Build GO-term table for LPS-related eggNOG hits.
 scripts/find_rfb_from_eggnog.py	Map rfb hits from eggNOG annotations back to Bakta coordinates.
@@ -25,4 +26,4 @@ scripts/selection_phase2/relax_sensitivity_summarize.py	Summarize RELAX sensitiv
 scripts/selection_phase2/gard_relax_sensitivity_report.py	Combine GARD/RELAX sensitivity summaries.
 scripts/selection_phase2/make_final_supplementary_tables.py	Assemble final supplementary tables from intermediate outputs.
 scripts/selection_phase2/pseudomonas_fulva_lps_analysis/	Exploratory Pseudomonas fulva side-analysis scripts.
-scripts/selection_phase2/pseudomonas_expanded_lps_analysis/	Expanded Pseudomonas reference-selection and annotation provenance scripts.
+scripts/archive_optional/	Older, alternative, or provenance scripts retained for transparency but not part of the primary reproduction path.

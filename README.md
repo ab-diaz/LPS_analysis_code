@@ -1,21 +1,48 @@
 # Comparative LPS/O-Antigen Genomics Code
 
-This directory contains a sanitized code bundle for the comparative genomics
-analysis of lipopolysaccharide (LPS) and O-antigen-associated genes in
+This repository contains the public, sanitized code for the comparative
+genomics analysis of lipopolysaccharide (LPS) and O-antigen-associated genes in
 Pantoea/Kalamiella genomes, with an exploratory Pseudomonas fulva side analysis.
 
-The code was recovered from the analysis workspace and cleaned for public
-release. Local absolute paths, usernames, local conda paths, and manuscript
-editing utilities were removed. External resources are represented by generic
-relative paths or command names.
+The repository is organized around one primary reproduction path:
 
-## Reproducibility Scope
+```bash
+conda env create -f environment.yml
+conda activate lps-oantigen-analysis
+snakemake --cores 8 --configfile config/config.yaml
+```
 
-The main Snakemake workflow automates the core analysis:
+The Snakemake workflow performs the main Bakta/eggNOG/LPS analysis. Additional
+standalone scripts used for downstream manuscript figures, robustness checks,
+selection summaries, and the Pseudomonas side analysis are included separately
+for transparency.
+
+## Repository Layout
+
+```text
+Snakefile                       Main workflow for the primary analysis
+config/config.yaml              Editable configuration template
+scripts/                        Scripts called directly by the Snakefile
+scripts/selection_phase2/        Downstream manuscript analyses
+scripts/selection_phase2/pseudomonas_fulva_lps_analysis/
+                                Exploratory Pseudomonas fulva side analysis
+scripts/archive_optional/        Older, alternative, or provenance scripts
+MANIFEST.tsv                    Short description of key scripts
+environment.yml                 Conda environment template
+CITATION.cff                    Citation metadata template
+LICENSE                         Code license
+```
+
+The most important files for reproducing the main analysis are `Snakefile`,
+`config/config.yaml`, and the scripts directly under `scripts/`.
+
+## What the Main Workflow Does
+
+The main Snakemake workflow automates:
 
 - Bakta genome annotation
 - eggNOG-mapper functional annotation
-- extraction of LPS/O-antigen-associated genes
+- LPS/O-antigen-associated gene extraction
 - strict LPS/O-antigen hit extraction
 - GO-term, GO-slim, and KO-category summaries
 - rfb/O-antigen locus mapping
@@ -23,37 +50,18 @@ The main Snakemake workflow automates the core analysis:
 - curation of rfbA, rfbB, rfbC, rfbD, and waaL orthologs for downstream
   codon-based analyses
 
-Some manuscript analyses are provided as standalone downstream scripts rather
-than fully integrated Snakemake rules. These include PhyloPhlAn/IQ-TREE
-phylogenomic visualization, founder-aware and phylogeny-aware robustness tests,
-locus-validation tables, RELAX/GARD sensitivity summaries, final supplementary
-table assembly, and the exploratory Pseudomonas fulva side analysis.
+The workflow writes outputs under:
 
-Thus, this bundle is intended to provide transparent computational provenance
-for the manuscript. It should reproduce the analysis when run with the same
-input genomes, metadata, curated term lists, and external databases, but it is
-not packaged as a one-command containerized workflow.
+```text
+results/genome_annotations/
+results/lps_analysis/
+```
 
-## Directory Contents
-
-- `Snakefile`: main configurable Snakemake workflow.
-- `MANIFEST.tsv`: short description of the main scripts and subdirectories.
-- `environment.yml`: conda environment template for the main workflow and common
-  downstream scripts.
-- `CITATION.cff`: citation metadata placeholder for GitHub/Zenodo release.
-- `LICENSE`: MIT license for the code.
-- `scripts/`: helper scripts used by the main workflow and downstream analyses.
-- `scripts/selection_phase2/`: ortholog curation, locus validation,
-  phylogenomic context, robustness analyses, RELAX/GARD support, figure
-  generation, and supplementary-table scripts.
-- `scripts/selection_phase2/pseudomonas_fulva_lps_analysis/`: exploratory
-  Pseudomonas fulva side-analysis scripts.
-- `scripts/selection_phase2/pseudomonas_expanded_lps_analysis/`: expanded
-  Pseudomonas reference-selection and annotation provenance scripts.
+These paths can be changed in `config/config.yaml`.
 
 ## Expected Inputs
 
-A typical project layout is:
+Edit `config/config.yaml` before running. A typical local layout is:
 
 ```text
 data/genomes/                    genome FASTA files
@@ -65,76 +73,39 @@ resources/lps_go_terms.tsv       curated LPS-related GO terms
 resources/goslim_prok_mapping.tsv
 ```
 
-The default workflow discovers genome files from `data/genomes/` with extensions
-`.fa`, `.fna`, or `.fasta`. Sample names are inferred from file names.
+By default, the workflow discovers genome files in `data/genomes/` with
+extensions `.fa`, `.fna`, or `.fasta`, and sample names are inferred from file
+names.
 
-Alternatively, provide a tab-delimited sample table with columns:
+Alternatively, provide a tab-delimited sample table and set `sample_table` in
+`config/config.yaml`. The table must contain:
 
 ```text
 sample    fasta
 ```
 
-The `metadata.tsv` or group map should contain sample identifiers and source
-groups such as `ISS` and `Earth`. The scripts accept common column names such as
-`sample`, `Sample ID`, `isolate`, `genome`, `group`, or `source`, depending on
-the step.
+The metadata/group map should contain sample identifiers and source groups such
+as `ISS` and `Earth`. Several scripts accept common column names such as
+`sample`, `Sample ID`, `isolate`, `genome`, `group`, or `source`.
 
-## Main Workflow
+## Main Reproduction Command
 
-Run from this directory:
-
-```bash
-snakemake --cores 8 \
-  --config genome_dir=data/genomes \
-           bakta_db=resources/bakta_db \
-           eggnog_data_dir=resources/eggnog \
-           go_obo=resources/go-basic.obo \
-           lps_terms=resources/lps_go_terms.tsv \
-           goslim_map=resources/goslim_prok_mapping.tsv \
-           group_map=metadata.tsv
-```
-
-Or with an explicit sample table:
+After editing `config/config.yaml`, run:
 
 ```bash
-snakemake --cores 8 \
-  --config sample_table=data/samples.tsv \
-           bakta_db=resources/bakta_db \
-           eggnog_data_dir=resources/eggnog \
-           go_obo=resources/go-basic.obo \
-           lps_terms=resources/lps_go_terms.tsv \
-           goslim_map=resources/goslim_prok_mapping.tsv \
-           group_map=metadata.tsv
+snakemake --cores 8 --configfile config/config.yaml
 ```
 
-The workflow writes outputs under:
-
-```text
-results/genome_annotations/
-results/lps_analysis/
-```
-
-These output paths can be changed with `--config results_dir=... analysis_dir=...`.
-
-## Environment Setup
-
-Create the conda environment template with:
+For a dry run:
 
 ```bash
-conda env create -f environment.yml
-conda activate lps-oantigen-analysis
+snakemake --dry-run --cores 1 --configfile config/config.yaml
 ```
 
-Some external tools and databases, especially Bakta, eggNOG-mapper, PhyloPhlAn,
-Pathview, and HyPhy, may require additional setup outside this repository. Follow
-the installation instructions for those tools and record the versions used in
-the final repository release.
+## Downstream Manuscript Scripts
 
-## Downstream Analyses
-
-Downstream scripts in `scripts/selection_phase2/` expect the outputs produced by
-the main workflow plus the corresponding phylogenomic or selection-analysis
-inputs. They were used for analyses described in the manuscript, including:
+Scripts in `scripts/selection_phase2/` were used after the main workflow to
+generate or summarize downstream analyses described in the manuscript, including:
 
 - marker-gene phylogenomic context
 - founder-aware strict-LPS-profile clustering
@@ -145,53 +116,74 @@ inputs. They were used for analyses described in the manuscript, including:
 - RELAX/GARD sensitivity summaries
 - final supplementary-table assembly
 
-The Pseudomonas fulva exploratory scripts are retained separately because that
-analysis was performed as a side analysis and was not combined statistically with
-the primary Pantoea/Kalamiella comparison.
+These scripts are retained as standalone scripts because they depend on
+intermediate files from phylogenomic and codon-selection tools that are not all
+fully wrapped in the main Snakemake workflow.
+
+The Pseudomonas fulva exploratory side analysis is kept under:
+
+```text
+scripts/selection_phase2/pseudomonas_fulva_lps_analysis/
+```
+
+It was analyzed separately and was not combined statistically with the primary
+Pantoea/Kalamiella comparison.
+
+## Optional Archive
+
+`scripts/archive_optional/` contains older, alternative, or provenance scripts.
+They are included for transparency, but they are not part of the primary
+reproduction path. Readers should use the main `Snakefile`, `config/config.yaml`,
+and the non-archived scripts first.
 
 ## Software Requirements
 
-Install the relevant tools in the environment used to run the workflow:
+The provided `environment.yml` is a starting point:
+
+```bash
+conda env create -f environment.yml
+conda activate lps-oantigen-analysis
+```
+
+Core tools:
 
 - Snakemake
 - Bakta
 - eggNOG-mapper
 - DIAMOND
-- Python 3 with pandas, numpy, matplotlib, scipy, and Biopython where required
-- R, plus packages needed by `plot_lps.R` and `run_pathview.R` if those scripts
-  are used
-- Optional downstream tools: MAFFT, PAL2NAL, IQ-TREE, HyPhy, PhyloPhlAn, Mash,
-  and trimAl
+- Python 3 with pandas, numpy, scipy, matplotlib, and Biopython
 
-Exact database versions and command-line tool versions should be reported with
-the manuscript or repository release when available.
+Downstream/optional tools:
 
-## Notes for Public Release
+- MAFFT
+- trimAl
+- IQ-TREE
+- HyPhy
+- PhyloPhlAn
+- Mash
+- R and packages needed by the R scripts
 
-This bundle intentionally does not include:
+External tools and databases may require setup outside this repository. Record
+the exact versions used in the final repository release or manuscript
+supplement.
+
+## What Is Not Included
+
+This repository intentionally does not include:
 
 - genome FASTA files
 - Bakta or eggNOG databases
 - generated result tables
 - generated figures
-- manuscript `.docx` files
-- scripts whose only purpose was to edit manuscript text
+- manuscript files
+- scripts whose only purpose was manuscript text editing
 
-Before archiving or publishing, verify that any input metadata released with the
-code does not contain restricted sample information. NCBI download helper scripts
-use the placeholder email `your.email@example.com`; replace it with the
-appropriate contact email before use.
+Before publishing metadata or input tables, verify that they do not contain
+restricted sample information. NCBI download helper scripts use the placeholder
+email `your.email@example.com`; replace it with the appropriate contact email
+before use.
 
-## Suggested GitHub/Journal Release Steps
+## Citation
 
-1. Create a new GitHub repository.
-2. Copy the contents of this `publication_code/` directory into the repository
-   root.
-3. Update `CITATION.cff` with the final repository URL, manuscript title,
-   author list, DOI, and release date.
-4. Add any publishable metadata tables or small curated term files if they are
-   cleared for release.
-5. Do not commit large databases, genome FASTA files, generated result
-   directories, or manuscript files.
-6. Create a versioned GitHub release and archive it with Zenodo if the journal
-   requires a permanent DOI.
+Update `CITATION.cff` with the final repository URL, manuscript title, DOI, and
+release date before creating a GitHub release or Zenodo archive.

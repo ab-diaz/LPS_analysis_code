@@ -47,7 +47,7 @@ config.setdefault("metadata", "metadata.tsv")
 config.setdefault("reference_isolate", "")
 
 
-SCRIPT_DIR = Path(workflow.basedir)
+SCRIPT_DIR = Path(workflow.basedir) / "scripts"
 GENOME_DIR = Path(config["genome_dir"])
 RESULTS_DIR = Path(config["results_dir"])
 ANALYSIS_DIR = Path(config["analysis_dir"])

@@ -1,0 +1,30 @@
+# Template configuration for the main Snakemake workflow.
+#
+# Edit these paths for your local installation before running:
+#   snakemake --cores 8 --configfile config/config.yaml
+
+genome_dir: data/genomes
+sample_table: ""
+
+results_dir: results/genome_annotations
+analysis_dir: results/lps_analysis
+plots_dir: results/lps_analysis/plots
+shared_genes_dir: results/lps_analysis/lps_shared_genes
+selection_dir: results/lps_analysis/selection_curation
+phase2_dir: results/lps_analysis/selection_phase2
+
+bakta: bakta
+bakta_db: resources/bakta_db
+emapper: emapper.py
+eggnog_data_dir: resources/eggnog
+diamond: diamond
+threads_per_job: 2
+eggnog_method: diamond
+eggnog_sensmode: sensitive
+
+go_obo: resources/go-basic.obo
+lps_terms: resources/lps_go_terms.tsv
+goslim_map: resources/goslim_prok_mapping.tsv
+group_map: metadata.tsv
+metadata: metadata.tsv
+reference_isolate: ""
