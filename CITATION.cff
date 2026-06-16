@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the associated manuscript."
+title: "Code for comparative LPS/O-antigen genomics in Pantoea/Kalamiella"
+authors:
+  - family-names: "Diaz Fernandez"
+    given-names: "Aurora B."
+  - family-names: "Pavletic"
+    given-names: "Bruno"
+date-released: 2026-06-16
+license: MIT
+repository-code: "https://github.com/USERNAME/REPOSITORY"
+abstract: "Sanitized Snakemake workflow and helper scripts for Bakta/eggNOG-based LPS and O-antigen comparative genomics, locus analyses, robustness analyses, and exploratory Pseudomonas fulva side analyses."

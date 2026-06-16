@@ -1,0 +1,28 @@
+path	description
+Snakefile	Main configurable Snakemake workflow for Bakta, eggNOG-mapper, LPS/O-antigen extraction, GO/KO summaries, plots, and selection-prep outputs.
+scripts/extract_lps_from_eggnog.py	Extract LPS/O-antigen protein and nucleotide sequences from eggNOG annotations.
+scripts/extract_lps_go_terms.py	Build GO-term table for LPS-related eggNOG hits.
+scripts/find_rfb_from_eggnog.py	Map rfb hits from eggNOG annotations back to Bakta coordinates.
+scripts/find_rfb_operon.py	Identify rfbA-D co-localization from Bakta GFF3 files.
+scripts/extract_shared_lps_genes.py	Extract per-gene FASTA files for shared strict LPS genes.
+scripts/build_lps_go_category_table.py	Summarize broad LPS GO categories across genomes/groups.
+scripts/build_lps_ko_category_table.py	Summarize KO/gene-name categories across genomes/groups.
+scripts/plot_lps_terms.py	Plot normalized LPS GO-term counts.
+scripts/plot_lps_goslim.py	Plot normalized GO-slim category counts.
+scripts/plot_oantigen_genes.py	Plot O-antigen/LPS gene fractions by group.
+scripts/curate_selection_orthologs.py	Curate single-copy rfbABCD and waaL orthologs for downstream codon analyses.
+scripts/prepare_selection_phase2.py	Prepare curated ortholog FASTAs and DIAMOND curation summaries for RELAX/GARD analyses.
+scripts/selection_phase2/pantoea_route1_strengthening.py	Founder-aware, temporal, and locus-architecture robustness analyses.
+scripts/selection_phase2/build_phylogeny_aware_inputs.py	Prepare focal-gene matrix and metadata for phylogeny-aware tests.
+scripts/selection_phase2/run_phylogeny_aware_gene_association.py	Run phylogeny-aware source association permutation tests.
+scripts/selection_phase2/make_phylophlan_phylogenomic_context.py	Generate PhyloPhlAn/IQ-TREE marker-tree context figure.
+scripts/selection_phase2/make_publication_locus_figure.py	Generate locus architecture figure panels.
+scripts/selection_phase2/build_locus_validation_table.py	Build coordinate-level locus validation table.
+scripts/selection_phase2/build_locus_evolutionary_context.py	Build locus GC/flanking/mobility context summaries.
+scripts/selection_phase2/build_surface_glycan_locus_functional_annotation.py	Classify CDSs in surface-glycan loci by function.
+scripts/selection_phase2/relax_sensitivity_prepare.py	Prepare RELAX sensitivity analyses.
+scripts/selection_phase2/relax_sensitivity_summarize.py	Summarize RELAX sensitivity outputs.
+scripts/selection_phase2/gard_relax_sensitivity_report.py	Combine GARD/RELAX sensitivity summaries.
+scripts/selection_phase2/make_final_supplementary_tables.py	Assemble final supplementary tables from intermediate outputs.
+scripts/selection_phase2/pseudomonas_fulva_lps_analysis/	Exploratory Pseudomonas fulva side-analysis scripts.
+scripts/selection_phase2/pseudomonas_expanded_lps_analysis/	Expanded Pseudomonas reference-selection and annotation provenance scripts.

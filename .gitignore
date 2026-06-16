@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# R/session artifacts
+.Rhistory
+.RData
+.Rproj.user/
+
+# Snakemake/runtime artifacts
+.snakemake/
+logs/
+
+# Large inputs and generated outputs
+data/
+resources/
+results/
+*.dmnd
+*.bt2
+*.mmi
+*.fasta
+*.fa
+*.fna
+*.faa
+*.ffn
+*.gbff
+*.gff
+*.gff3
+*.bam
+*.sam
+*.cram
+*.vcf
+*.bcf
+*.zip
+*.tar
+*.tar.gz
+
+# Manuscripts and local office artifacts
+*.docx
+~$*
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

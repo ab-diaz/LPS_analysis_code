@@ -1,0 +1,25 @@
+name: lps-oantigen-analysis
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python>=3.10
+  - snakemake
+  - bakta
+  - eggnog-mapper
+  - diamond
+  - pandas
+  - numpy
+  - scipy
+  - matplotlib
+  - biopython
+  - iqtree
+  - mafft
+  - trimal
+  - hyphy
+  - mash
+  - r-base
+  - r-tidyverse
+  - r-ggplot2
+  - pip
