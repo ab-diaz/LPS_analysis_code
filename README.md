@@ -29,7 +29,6 @@ scripts/selection_phase2/pseudomonas_fulva_lps_analysis/
 scripts/archive_optional/        Older, alternative, or provenance scripts
 MANIFEST.tsv                    Short description of key scripts
 environment.yml                 Conda environment template
-CITATION.cff                    Citation metadata template
 LICENSE                         Code license
 ```
 
@@ -179,11 +178,5 @@ This repository intentionally does not include:
 - scripts whose only purpose was manuscript text editing
 
 Before publishing metadata or input tables, verify that they do not contain
-restricted sample information. NCBI download helper scripts use the placeholder
-email `your.email@example.com`; replace it with the appropriate contact email
-before use.
-
-## Citation
-
-Update `CITATION.cff` with the final repository URL, manuscript title, DOI, and
-release date before creating a GitHub release or Zenodo archive.
+restricted sample information. NCBI download helper scripts require `NCBI_EMAIL`
+to be set in the environment before use.

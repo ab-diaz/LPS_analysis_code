@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import re
 import time
 import urllib.parse
@@ -25,8 +26,12 @@ OUT_METADATA = ROOT / "genome_metadata_pfulva_expanded.tsv"
 MAX_SELECTED = 15
 
 NCBI_TOOL = "kalamiella_pfulva_reference_selection"
-NCBI_EMAIL = "your.email@example.com"
+NCBI_EMAIL = os.environ.get("NCBI_EMAIL")
 ASSEMBLY_TERM = 'txid47880[Organism:exp] AND "Pseudomonas fulva"[Organism]'
+
+
+if not NCBI_EMAIL:
+    raise SystemExit("Set NCBI_EMAIL before querying NCBI, e.g. export NCBI_EMAIL=name@example.org")
 
 SPACE_TERMS = re.compile(
     r"iss|international space station|spacecraft|mars odyssey|odyssey|cleanroom|clean room|jpl|jet propulsion",

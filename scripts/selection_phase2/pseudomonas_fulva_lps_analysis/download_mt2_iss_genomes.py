@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import gzip
 import json
+import os
 import shutil
 import time
 import urllib.parse
@@ -16,13 +17,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 META = ROOT / "genome_metadata_pfulva_expanded_with_mt2_iss.tsv"
 GENOMES = ROOT / "genomes"
+NCBI_EMAIL = os.environ.get("NCBI_EMAIL")
+
+
+if not NCBI_EMAIL:
+    raise SystemExit("Set NCBI_EMAIL before querying NCBI, e.g. export NCBI_EMAIL=name@example.org")
 
 
 def eutils_url(endpoint: str, params: dict[str, str]) -> str:
     base = f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/{endpoint}.fcgi"
     params = dict(params)
     params.setdefault("tool", "kalamiella_pfulva_mt2_download")
-    params.setdefault("email", "your.email@example.com")
+    params.setdefault("email", NCBI_EMAIL)
     return base + "?" + urllib.parse.urlencode(params)
 
 
