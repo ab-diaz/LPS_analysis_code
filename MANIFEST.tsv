@@ -26,3 +26,8 @@ scripts/selection_phase2/relax_sensitivity_summarize.py	Summarize RELAX sensitiv
 scripts/selection_phase2/gard_relax_sensitivity_report.py	Combine GARD/RELAX sensitivity summaries.
 scripts/selection_phase2/make_final_supplementary_tables.py	Assemble final supplementary tables from intermediate outputs.
 scripts/selection_phase2/pseudomonas_fulva_lps_analysis/	Exploratory Pseudomonas fulva side-analysis scripts.
+scripts/selection_phase2/run_gubbins_piersonii.sh	Portable Gubbins/Snippy/IQ-TREE workflow for the 57-genome P. piersonii core-SNP analysis.
+scripts/selection_phase2/make_figure3_lps_gene_enrichment.py	Generate manuscript Figure 3 from frozen LPS presence and Fisher-test tables.
+scripts/selection_phase2/make_figure1_recombination_filtered.py	Render the 57-genome Gubbins-filtered main phylogeny and focal-gene matrix.
+scripts/network/	Prepare and document the 92-genome and 28-taxon NeighborNet analyses.
+reproducibility/	Manuscript analysis boundary, frozen-input contract and validation checks.

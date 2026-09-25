@@ -1,8 +1,17 @@
 # Comparative LPS/O-Antigen Genomics Code
 
-This repository contains the public, sanitized code for the comparative
-genomics analysis of lipopolysaccharide (LPS) and O-antigen-associated genes in
-Pantoea/Kalamiella genomes, with an exploratory Pseudomonas fulva side analysis.
+This repository contains the public, sanitized code for the manuscript's
+comparative genomics analysis of lipopolysaccharide (LPS) and O-antigen-
+associated genes in 92 Pantoea genomes. The release is organized around the
+analyses actually used in the manuscript; unrelated exploratory analyses are
+not required for reproduction.
+
+The final manuscript analysis has two reproducibility levels:
+
+1. **Figure/table reproduction**, starting from frozen annotation, metadata,
+   alignments and feature matrices.
+2. **Upstream annotation**, an optional workflow requiring local Bakta and
+   eggNOG-mapper databases.
 
 The repository is organized around one primary reproduction path:
 
@@ -12,10 +21,9 @@ conda activate lps-oantigen-analysis
 snakemake --cores 8 --configfile config/config.yaml
 ```
 
-The Snakemake workflow performs the main Bakta/eggNOG/LPS analysis. Additional
-standalone scripts used for downstream manuscript figures, robustness checks,
-selection summaries, and the Pseudomonas side analysis are included separately
-for transparency.
+The Snakemake workflow performs the primary Bakta/eggNOG/LPS analysis.
+Recombination-aware and network analyses are documented under
+`reproducibility/` and `scripts/selection_phase2/`.
 
 ## Repository Layout
 
@@ -24,8 +32,7 @@ Snakefile                       Main workflow for the primary analysis
 config/config.yaml              Editable configuration template
 scripts/                        Scripts called directly by the Snakefile
 scripts/selection_phase2/        Downstream manuscript analyses
-scripts/selection_phase2/pseudomonas_fulva_lps_analysis/
-                                Exploratory Pseudomonas fulva side analysis
+reproducibility/                 Manuscript release instructions and checks
 MANIFEST.tsv                    Short description of key scripts
 environment.yml                 Conda environment template
 LICENSE                         Code license
@@ -100,32 +107,26 @@ For a dry run:
 snakemake --dry-run --cores 1 --configfile config/config.yaml
 ```
 
-## Downstream Manuscript Scripts
+## Final manuscript analyses
 
-Scripts in `scripts/selection_phase2/` were used after the main workflow to
-generate or summarize downstream analyses described in the manuscript, including:
+The final manuscript uses:
 
-- marker-gene phylogenomic context
-- founder-aware strict-LPS-profile clustering
-- ISS sampling-year persistence summaries
-- species-restricted phylogeny-aware permutation tests
-- coordinate-level O-antigen/LPS locus validation
-- locus GC/flanking/mobility context
-- RELAX/GARD sensitivity summaries
-- final supplementary-table assembly
+- LPS/O-antigen feature presence/absence and GO/KO summaries for 92 genomes;
+- broad marker-based multispecies context;
+- a Gubbins-filtered core-SNP phylogeny for 57 *P. piersonii* genomes;
+- NeighborNet networks for 28 taxon representatives and all 92 genomes;
+- founder-aware, temporal and phylogeny-aware robustness analyses;
+- locus-coordinate and surface-glycan architecture summaries;
+- RELAX/GARD selection-sensitivity and founder-relative mutation summaries;
+- a separate exploratory *Pseudomonas fulva* comparison presented as Figure 7;
+- the manuscript figures and supplementary tables.
 
 These scripts are retained as standalone scripts because they depend on
 intermediate files from phylogenomic and codon-selection tools that are not all
 fully wrapped in the main Snakemake workflow.
 
-The Pseudomonas fulva exploratory side analysis is kept under:
-
-```text
-scripts/selection_phase2/pseudomonas_fulva_lps_analysis/
-```
-
-It was analyzed separately and was not combined statistically with the primary
-Pantoea/Kalamiella comparison.
+The *Pseudomonas fulva* comparison is kept separate from the Pantoea analyses
+and is not combined statistically with them.
 
 ## Software Requirements
 
@@ -151,12 +152,15 @@ Downstream/optional tools:
 - IQ-TREE
 - HyPhy
 - PhyloPhlAn
+- Gubbins and Snippy (57-genome recombination-aware analysis)
+- SplitsTree App v6.9.5 (NeighborNet; Java application)
 - Mash
 - R and packages needed by the R scripts
 
-External tools and databases may require setup outside this repository. Record
-the exact versions used in the final repository release or manuscript
-supplement.
+External tools and databases may require setup outside this repository. The
+recombination analysis used Gubbins 3.4.3 and IQ-TREE 2.4.0; the network
+analysis used SplitsTree App v6.9.5. A Code Ocean capsule should freeze the
+solved Conda environment in addition to this template.
 
 ## What Is Not Included
 

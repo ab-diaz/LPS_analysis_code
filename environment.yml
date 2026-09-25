@@ -4,17 +4,24 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - python>=3.10
-  - snakemake
-  - bakta
-  - eggnog-mapper
-  - diamond
+  - python=3.10
+  - snakemake=8.30
+  - bakta=1.9
+  - eggnog-mapper=2.1
+  - diamond=2.1
   - pandas
   - numpy
   - scipy
   - matplotlib
+  - seaborn
   - biopython
+  - openpyxl
+  - lxml
+  - pymupdf
+  - python-docx
   - iqtree
+  - gubbins=3.4.3
+  - snippy=4.0.2
   - mafft
   - trimal
   - hyphy

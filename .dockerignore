@@ -1,0 +1,11 @@
+.git
+.snakemake
+__pycache__
+outputs
+data
+resources
+results
+*.docx
+*.xlsx
+*.png
+*.pdf
