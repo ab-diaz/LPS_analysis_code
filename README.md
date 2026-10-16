@@ -115,7 +115,8 @@ The final manuscript uses:
 - broad marker-based multispecies context;
 - a Gubbins-filtered core-SNP phylogeny for 57 *P. piersonii* genomes;
 - NeighborNet networks for 28 taxon representatives and all 92 genomes;
-- founder-aware, temporal and phylogeny-aware robustness analyses;
+- exact-profile and leave-one-year-out sensitivity summaries; these do not
+  adjust for shared ancestry;
 - locus-coordinate and surface-glycan architecture summaries;
 - RELAX/GARD selection-sensitivity and founder-relative mutation summaries;
 - a separate exploratory *Pseudomonas fulva* comparison presented as Figure 7;
@@ -127,6 +128,34 @@ fully wrapped in the main Snakemake workflow.
 
 The *Pseudomonas fulva* comparison is kept separate from the Pantoea analyses
 and is not combined statistically with them.
+
+### Corrected manuscript boundary (16 October 2026)
+
+The submitted Figure 1 uses the matched 57-isolate IQ-TREE comparison in
+`scripts/selection_phase2/reproduce_matched_trees.sh`, starting from the same
+cleaned full core alignment before and after Gubbins masking. It excludes the
+technical `Reference` sequence before final SNP extraction and tree inference.
+`run_gubbins_piersonii.sh` performs the upstream Snippy/Gubbins stage only;
+it no longer generates incomparable before/after IQ-TREE trees.
+
+Figure 4 has **two panels**. The old three-panel Figure 4 and label-shuffling
+scripts are excluded from this release because the shuffles did not use branch
+lengths or topology. Reproduce the
+displayed panel A/B from the archived source tables with
+`scripts/selection_phase2/make_figure4_profile_year.py`.
+
+Figure 3 combines the three equivalent O-antigen-ligase annotation labels
+(`waaL`, `rfaL`, `ko:K02847`) before feature-level testing. The corrected
+script in `make_figure3_lps_gene_enrichment.py` reproduces the merged
+46-feature Fisher/BH source table and plotted findings from the archived
+48-row annotation matrix.
+
+The repository must be released together with the corrected data archive or
+its frozen inputs; the Snakemake command above is the upstream annotation
+workflow, not a one-command reproduction of every downstream result.
+To run the frozen-input smoke test on another Linux system, extract the
+required files with `reproducibility/prepare_review_inputs.sh` as described
+in `reproducibility/README.md`.
 
 ## Software Requirements
 

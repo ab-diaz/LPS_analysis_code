@@ -5,7 +5,6 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 INPUTS="${MANUSCRIPT_INPUTS:-${ROOT}/inputs}"
 
 required=(
-  metadata.tsv
   lps_strict_presence.tsv
   lps_strict_presence_long.tsv
   lps_strict_gene_fisher.tsv

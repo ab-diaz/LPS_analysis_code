@@ -55,7 +55,7 @@ def main() -> None:
 
     tree = Phylo.read(args.tree, "newick")
     if any(t.name == "Reference" for t in tree.get_terminals()):
-        tree.prune("Reference")
+        raise ValueError("The matched-tree input must already exclude the technical Reference")
     tree.ladderize()
     names = [t.name for t in tree.get_terminals()]
     if len(names) != 57 or len(set(names)) != 57:
@@ -119,8 +119,8 @@ def main() -> None:
     fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(.5, .035), ncol=4, frameon=False, fontsize=8)
     fig.text(.5, .012, "Gene matrix: blue = detected; light grey = not detected. Orange nodes: SH-aLRT ≥80 and UFBoot ≥95.", ha="center", fontsize=8)
     args.outdir.mkdir(parents=True, exist_ok=True)
-    fig.savefig(args.outdir / "Figure_1_recombination_filtered.png", dpi=300, bbox_inches="tight")
-    fig.savefig(args.outdir / "Figure_1_recombination_filtered.pdf", bbox_inches="tight")
+    fig.savefig(args.outdir / "Figure_1.png", dpi=300, bbox_inches="tight")
+    fig.savefig(args.outdir / "Figure_1.pdf", bbox_inches="tight")
 
 
 if __name__ == "__main__":

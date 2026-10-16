@@ -19,7 +19,8 @@ dependencies:
   - lxml
   - pymupdf
   - python-docx
-  - iqtree
+  - iqtree=2.4.0
+  - snp-sites=2.5.1
   - gubbins=3.4.3
   - snippy=4.0.2
   - mafft

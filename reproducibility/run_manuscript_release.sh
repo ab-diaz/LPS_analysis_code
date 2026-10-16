@@ -10,6 +10,7 @@ python "${ROOT}/scripts/selection_phase2/make_figure3_lps_gene_enrichment.py" \
   --analysis-dir "${INPUTS}" \
   --outdir "${OUTPUTS}/figures"
 
-echo "Manuscript release outputs written to ${OUTPUTS}"
+echo "Input checks and corrected Figure 3 output written to ${OUTPUTS}"
+echo "This command does not rebuild every submitted figure. See reproducibility/README.md."
 echo "The Gubbins and SplitsTree workflows are run separately as documented in"
 echo "scripts/selection_phase2/run_gubbins_piersonii.sh and scripts/network/README.md."
