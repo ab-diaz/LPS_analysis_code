@@ -28,6 +28,7 @@ scripts/selection_phase2/reproduce_matched_trees.sh	Recreate the submitted match
 scripts/selection_phase2/compare_matched_trees.py	Verify the focal split and other topology comparisons in the matched trees.
 scripts/selection_phase2/make_figure4_profile_year.py	Render the submitted two-panel profile-cluster/year Figure 4 without permutation claims.
 scripts/selection_phase2/make_figure3_lps_gene_enrichment.py	Merge equivalent waaL/rfaL/K02847 ligase aliases, rerun Fisher/BH tests, and generate the submitted Figure 3.
+scripts/selection_phase2/harmonize_s2_merged_figure3.py	Replace S2 full-92 Fisher worksheet with the exact 46 nonredundant Figure 3 tests while preserving its other worksheets.
 scripts/selection_phase2/make_figure1_recombination_filtered.py	Render the 57-genome Gubbins-filtered main phylogeny and focal-gene matrix.
 scripts/selection_phase2/correct_s1_isolate_label.py	Correct the verified F8/F9 isolate-label typo in the rendered Supplementary Figure S1 PDF.
 scripts/network/	Prepare and document the 92-genome and 28-taxon NeighborNet analyses.

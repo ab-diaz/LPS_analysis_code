@@ -149,6 +149,9 @@ Figure 3 combines the three equivalent O-antigen-ligase annotation labels
 script in `make_figure3_lps_gene_enrichment.py` reproduces the merged
 46-feature Fisher/BH source table and plotted findings from the archived
 48-row annotation matrix.
+The final Supplementary Table S2 full-92 Fisher worksheet is synchronized to
+those 46 tests using `harmonize_s2_merged_figure3.py`; its other two worksheets
+retain their separate focal-gene and within-species analyses.
 
 The repository must be released together with the corrected data archive or
 its frozen inputs; the Snakemake command above is the upstream annotation

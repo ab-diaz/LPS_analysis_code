@@ -37,7 +37,7 @@ From the repository root:
 ```bash
 mamba env create -f environment.yml
 mamba activate lps-oantigen-analysis
-bash reproducibility/prepare_review_inputs.sh /path/to/figshare_Kalamiella_Pantoea_data_corrected_v2_2026-10-16.zip inputs
+bash reproducibility/prepare_review_inputs.sh /path/to/figshare_Kalamiella_Pantoea_data_corrected_v4_2026-10-17.zip inputs
 bash reproducibility/run_checks.sh
 ```
 
@@ -60,6 +60,18 @@ O-antigen-ligase feature by genome-level logical OR, then reruns two-sided
 Fisher tests and Benjamini-Hochberg adjustment over **46** nonredundant
 features (48 source rows minus two duplicates). Its output table is
 `outputs/figures/figure3_waaL_merged_fisher.tsv`.
+
+The archived Supplementary Table S2 full-92 Fisher worksheet contains these
+same 46 nonredundant tests (including the recalculated `rfbC` p value), not
+the historical 48-row annotation screen. It can be regenerated from the
+Figure 3 table without changing the focal-gene or within-species worksheets:
+
+```bash
+python scripts/selection_phase2/harmonize_s2_merged_figure3.py \
+  --source-workbook /path/to/historical_S2.xlsx \
+  --figure3-table outputs/figures/figure3_waaL_merged_fisher.tsv \
+  --output outputs/Supplementary_Table_S2_association_robustness.xlsx
+```
 
 All input locations are supplied through configuration or command-line
 arguments. Do not edit scripts to add machine-specific paths.
