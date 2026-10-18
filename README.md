@@ -119,7 +119,7 @@ The final manuscript uses:
   adjust for shared ancestry;
 - locus-coordinate and surface-glycan architecture summaries;
 - RELAX/GARD selection-sensitivity and founder-relative mutation summaries;
-- a separate exploratory *Pseudomonas fulva* comparison presented as Figure 7;
+- a separate exploratory *Pseudomonas fulva* comparison;
 - the manuscript figures and supplementary tables.
 
 These scripts are retained as standalone scripts because they depend on
@@ -129,35 +129,14 @@ fully wrapped in the main Snakemake workflow.
 The *Pseudomonas fulva* comparison is kept separate from the Pantoea analyses
 and is not combined statistically with them.
 
-### Figure and table reproduction
+### Reproducing downstream analyses
 
-Figure 1 uses the matched 57-isolate IQ-TREE comparison in
-`scripts/selection_phase2/reproduce_matched_trees.sh`, starting from the same
-cleaned full core alignment before and after Gubbins masking. It excludes the
-technical `Reference` sequence before final SNP extraction and tree inference.
-`run_gubbins_piersonii.sh` performs the upstream Snippy/Gubbins stage;
-`reproduce_matched_trees.sh` performs the matched tree reconstruction.
-
-Figure 4 has **two panels** showing exact-profile and sampling-year summaries.
-These are descriptive sensitivity analyses, not tests that adjust for shared
-ancestry. Reproduce panels A and B from the archived source tables with
-`scripts/selection_phase2/make_figure4_profile_year.py`.
-
-Figure 3 combines the three equivalent O-antigen-ligase annotation labels
-(`waaL`, `rfaL`, `ko:K02847`) before feature-level testing. The
-script in `make_figure3_lps_gene_enrichment.py` reproduces the merged
-46-feature Fisher/BH source table and plotted findings from the archived
-48-row annotation matrix.
-The Supplementary Table S2 full-92 Fisher worksheet is synchronized to
-those 46 tests using `harmonize_s2_merged_figure3.py`; its other two worksheets
-retain their separate focal-gene and within-species analyses.
-
-The repository requires the companion data archive or
-its frozen inputs; the Snakemake command above is the upstream annotation
-workflow, not a one-command reproduction of every downstream result.
-To run the frozen-input smoke test on another Linux system, extract the
-required files with `reproducibility/prepare_review_inputs.sh` as described
-in `reproducibility/README.md`.
+The Snakemake workflow covers upstream genome annotation and feature
+extraction. Downstream tree, network, statistical, and visualization scripts
+are in `scripts/selection_phase2/` and `scripts/network/`. The companion data
+archive supplies the frozen inputs needed for these analyses. See
+`reproducibility/README.md` for the analysis-to-script mapping, input
+requirements, and validation commands.
 
 ## Software Requirements
 
@@ -202,7 +181,6 @@ This repository intentionally does not include:
 - generated result tables
 - generated figures
 - manuscript files
-- scripts whose only purpose was manuscript text editing
 
 Before publishing metadata or input tables, verify that they do not contain
 restricted sample information. NCBI download helper scripts require `NCBI_EMAIL`
