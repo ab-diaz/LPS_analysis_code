@@ -1,6 +1,6 @@
 # Manuscript reproduction release
 
-This directory defines the final analysis boundary for the manuscript. It is
+This directory describes the manuscript reproduction workflow. It is
 intended to run in a Linux, Conda/Mamba, Docker, or Code Ocean environment;
 no workstation-specific paths are required.
 
@@ -26,10 +26,6 @@ Other unrelated exploratory analyses are not part of the minimal reproduction
 path. The *Pseudomonas fulva* branch is retained because it is described in
 the manuscript, but it remains statistically separate from the Pantoea study.
 
-The earlier source-label permutation output is excluded from Figure 4 and
-Supplementary Table S2. The experimental phylogenetic-logistic trial did not
-converge reliably and is not presented as a publication result.
-
 ## Portable execution
 
 From the repository root:
@@ -37,7 +33,7 @@ From the repository root:
 ```bash
 mamba env create -f environment.yml
 mamba activate lps-oantigen-analysis
-bash reproducibility/prepare_review_inputs.sh /path/to/figshare_Kalamiella_Pantoea_data_corrected_v4_2026-10-17.zip inputs
+bash reproducibility/prepare_review_inputs.sh /path/to/deposited_data_archive.zip inputs
 bash reproducibility/run_checks.sh
 ```
 
@@ -62,13 +58,12 @@ features (48 source rows minus two duplicates). Its output table is
 `outputs/figures/figure3_waaL_merged_fisher.tsv`.
 
 The archived Supplementary Table S2 full-92 Fisher worksheet contains these
-same 46 nonredundant tests (including the recalculated `rfbC` p value), not
-the historical 48-row annotation screen. It can be regenerated from the
+same 46 nonredundant tests. It can be regenerated from the
 Figure 3 table without changing the focal-gene or within-species worksheets:
 
 ```bash
 python scripts/selection_phase2/harmonize_s2_merged_figure3.py \
-  --source-workbook /path/to/historical_S2.xlsx \
+  --source-workbook /path/to/Supplementary_Table_S2_source.xlsx \
   --figure3-table outputs/figures/figure3_waaL_merged_fisher.tsv \
   --output outputs/Supplementary_Table_S2_association_robustness.xlsx
 ```
@@ -116,9 +111,9 @@ and IQ-TREE. Figures and tables are generated only after input validation.
 
 The Code Ocean capsule should use this repository plus the frozen `inputs/`
 directory and write outputs beneath `outputs/`. The complete Gubbins run is
-available as a historical upstream command because it requires the 57 assembly
-files and can take substantially longer than figure regeneration. For the
-submitted matched-tree comparison, use
+available as an upstream command; it requires the 57 assembly files and can
+take substantially longer than figure regeneration. For the
+matched-tree comparison, use
 `scripts/selection_phase2/reproduce_matched_trees.sh` with the archived full
 core alignment and Gubbins GFF, SNP-sites 2.5.1, Gubbins 3.4.3, and IQ-TREE
 2.4.0. Set `MASK_SCRIPT` to Gubbins' `mask_gubbins_aln.py` path if necessary.

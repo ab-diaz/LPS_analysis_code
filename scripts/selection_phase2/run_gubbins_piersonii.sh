@@ -46,4 +46,4 @@ run_gubbins.py --prefix "$OUTDIR/gubbins/piersonii57" --threads "$THREADS" \
   > "$OUTDIR/logs/gubbins.stdout.log" 2> "$OUTDIR/logs/gubbins.stderr.log"
 
 echo "Snippy/Gubbins upstream analysis completed in $OUTDIR"
-echo "Use reproduce_matched_trees.sh for the submitted matched before/after IQ-TREE analysis."
+echo "Use reproduce_matched_trees.sh for the matched before/after IQ-TREE analysis."

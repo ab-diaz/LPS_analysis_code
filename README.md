@@ -129,31 +129,30 @@ fully wrapped in the main Snakemake workflow.
 The *Pseudomonas fulva* comparison is kept separate from the Pantoea analyses
 and is not combined statistically with them.
 
-### Corrected manuscript boundary (16 October 2026)
+### Figure and table reproduction
 
-The submitted Figure 1 uses the matched 57-isolate IQ-TREE comparison in
+Figure 1 uses the matched 57-isolate IQ-TREE comparison in
 `scripts/selection_phase2/reproduce_matched_trees.sh`, starting from the same
 cleaned full core alignment before and after Gubbins masking. It excludes the
 technical `Reference` sequence before final SNP extraction and tree inference.
-`run_gubbins_piersonii.sh` performs the upstream Snippy/Gubbins stage only;
-it no longer generates incomparable before/after IQ-TREE trees.
+`run_gubbins_piersonii.sh` performs the upstream Snippy/Gubbins stage;
+`reproduce_matched_trees.sh` performs the matched tree reconstruction.
 
-Figure 4 has **two panels**. The old three-panel Figure 4 and label-shuffling
-scripts are excluded from this release because the shuffles did not use branch
-lengths or topology. Reproduce the
-displayed panel A/B from the archived source tables with
+Figure 4 has **two panels** showing exact-profile and sampling-year summaries.
+These are descriptive sensitivity analyses, not tests that adjust for shared
+ancestry. Reproduce panels A and B from the archived source tables with
 `scripts/selection_phase2/make_figure4_profile_year.py`.
 
 Figure 3 combines the three equivalent O-antigen-ligase annotation labels
-(`waaL`, `rfaL`, `ko:K02847`) before feature-level testing. The corrected
+(`waaL`, `rfaL`, `ko:K02847`) before feature-level testing. The
 script in `make_figure3_lps_gene_enrichment.py` reproduces the merged
 46-feature Fisher/BH source table and plotted findings from the archived
 48-row annotation matrix.
-The final Supplementary Table S2 full-92 Fisher worksheet is synchronized to
+The Supplementary Table S2 full-92 Fisher worksheet is synchronized to
 those 46 tests using `harmonize_s2_merged_figure3.py`; its other two worksheets
 retain their separate focal-gene and within-species analyses.
 
-The repository must be released together with the corrected data archive or
+The repository requires the companion data archive or
 its frozen inputs; the Snakemake command above is the upstream annotation
 workflow, not a one-command reproduction of every downstream result.
 To run the frozen-input smoke test on another Linux system, extract the

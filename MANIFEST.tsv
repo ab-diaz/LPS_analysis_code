@@ -24,13 +24,13 @@ scripts/selection_phase2/relax_sensitivity_summarize.py	Summarize RELAX sensitiv
 scripts/selection_phase2/gard_relax_sensitivity_report.py	Combine GARD/RELAX sensitivity summaries.
 scripts/selection_phase2/pseudomonas_fulva_lps_analysis/	Exploratory Pseudomonas fulva side-analysis scripts.
 scripts/selection_phase2/run_gubbins_piersonii.sh	Upstream Snippy/Gubbins runner; matched IQ-TREE reconstruction is a separate step.
-scripts/selection_phase2/reproduce_matched_trees.sh	Recreate the submitted matched 57-isolate before/after Gubbins IQ-TREE analysis.
+scripts/selection_phase2/reproduce_matched_trees.sh	Recreate the matched 57-isolate before/after Gubbins IQ-TREE analysis.
 scripts/selection_phase2/compare_matched_trees.py	Verify the focal split and other topology comparisons in the matched trees.
-scripts/selection_phase2/make_figure4_profile_year.py	Render the submitted two-panel profile-cluster/year Figure 4 without permutation claims.
-scripts/selection_phase2/make_figure3_lps_gene_enrichment.py	Merge equivalent waaL/rfaL/K02847 ligase aliases, rerun Fisher/BH tests, and generate the submitted Figure 3.
+scripts/selection_phase2/make_figure4_profile_year.py	Render the two-panel profile-cluster/year Figure 4.
+scripts/selection_phase2/make_figure3_lps_gene_enrichment.py	Merge equivalent waaL/rfaL/K02847 ligase aliases, run Fisher/BH tests, and generate Figure 3.
 scripts/selection_phase2/harmonize_s2_merged_figure3.py	Replace S2 full-92 Fisher worksheet with the exact 46 nonredundant Figure 3 tests while preserving its other worksheets.
 scripts/selection_phase2/make_figure1_recombination_filtered.py	Render the 57-genome Gubbins-filtered main phylogeny and focal-gene matrix.
 scripts/selection_phase2/correct_s1_isolate_label.py	Correct the verified F8/F9 isolate-label typo in the rendered Supplementary Figure S1 PDF.
 scripts/network/	Prepare and document the 92-genome and 28-taxon NeighborNet analyses.
-reproducibility/	Manuscript analysis boundary, frozen-input contract and validation checks.
-reproducibility/prepare_review_inputs.sh	Extract frozen smoke-test inputs from the corrected data ZIP without overwriting existing files.
+reproducibility/	Manuscript reproduction instructions, frozen-input contract and validation checks.
+reproducibility/prepare_review_inputs.sh	Extract frozen smoke-test inputs from the companion data archive without overwriting existing files.
