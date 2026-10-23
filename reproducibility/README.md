@@ -1,6 +1,6 @@
-# Manuscript reproduction release
+# Reproducing the analyses
 
-This directory describes the manuscript reproduction workflow. It is
+This directory describes the analysis reproduction workflow. It is
 intended to run in a Linux, Conda/Mamba, Docker, or Code Ocean environment;
 no workstation-specific paths are required.
 

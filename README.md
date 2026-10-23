@@ -1,12 +1,10 @@
 # Comparative LPS/O-Antigen Genomics Code
 
-This repository contains the public, sanitized code for the manuscript's
-comparative genomics analysis of lipopolysaccharide (LPS) and O-antigen-
-associated genes in 92 Pantoea genomes. The release is organized around the
-analyses actually used in the manuscript; unrelated exploratory analyses are
-not required for reproduction.
+This repository contains code for a comparative genomics study of
+lipopolysaccharide (LPS) and O-antigen-associated genes in 92 Pantoea genomes.
+It includes the workflows and scripts used for the reported analyses.
 
-The final manuscript analysis has two reproducibility levels:
+There are two ways to reproduce the analyses:
 
 1. **Figure/table reproduction**, starting from frozen annotation, metadata,
    alignments and feature matrices.
@@ -31,8 +29,8 @@ Recombination-aware and network analyses are documented under
 Snakefile                       Main workflow for the primary analysis
 config/config.yaml              Editable configuration template
 scripts/                        Scripts called directly by the Snakefile
-scripts/selection_phase2/        Downstream manuscript analyses
-reproducibility/                 Manuscript release instructions and checks
+scripts/selection_phase2/        Downstream analyses
+reproducibility/                 Analysis instructions and checks
 MANIFEST.tsv                    Short description of key scripts
 environment.yml                 Conda environment template
 LICENSE                         Code license
@@ -107,9 +105,9 @@ For a dry run:
 snakemake --dry-run --cores 1 --configfile config/config.yaml
 ```
 
-## Final manuscript analyses
+## Analyses covered
 
-The final manuscript uses:
+The study includes:
 
 - LPS/O-antigen feature presence/absence and GO/KO summaries for 92 genomes;
 - broad marker-based multispecies context;
